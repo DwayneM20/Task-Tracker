@@ -6,6 +6,12 @@ public class Task {
     private String createdAt;
     private String updatedAt;
 
+    // ANSI Color codes
+    private static final String RED = "\u001B[31m";
+    private static final String YELLOW = "\u001B[33m";
+    private static final String GREEN = "\u001B[32m";
+    private static final String RESET = "\u001B[0m";
+
     public Task(int id, String description, String status, String priority, String createdAt, String updatedAt) {
         this.id = id;
         this.description = description;
@@ -79,10 +85,10 @@ public class Task {
 
     public String getPriorityDisplay() {
         return switch (priority.toLowerCase()) {
-            case "high" -> "🔴 HIGH";
-            case "medium" -> "🟡 MED";
-            case "low" -> "🟢 LOW";
-            default -> "🟡 MED";
+            case "high" -> RED + "HIGH" + RESET;
+            case "medium" -> YELLOW + "MED" + RESET;
+            case "low" -> GREEN + "LOW" + RESET;
+            default -> YELLOW + "MED" + RESET;
         };
     }
 
